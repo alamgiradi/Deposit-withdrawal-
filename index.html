@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DepositWithdrawal Main</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#020817;
+  color:#fff;
+}
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 6%;
+  border-bottom:1px solid #182338;
+  position:sticky;
+  top:0;
+  background:#020817ee;
+  z-index:10;
+}
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+.logo span:nth-child(1){color:#168cff}
+.logo span:nth-child(2){color:#32d34b}
+.logo small{
+  display:block;
+  color:#ffd900;
+  font-size:11px;
+  letter-spacing:4px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 12px;
+}
+.nav-btn{
+  padding:10px 18px;
+  border:1px solid #168cff;
+  border-radius:8px;
+  color:white;
+}
+.register{
+  background:#ffd900;
+  color:#000;
+  border:0;
+}
+.hero{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 6%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+.badge{
+  display:inline-block;
+  padding:9px 18px;
+  border:1px solid #31506d;
+  border-radius:30px;
+  margin-bottom:22px;
+}
+.badge b:nth-child(1){color:#168cff}
+.badge b:nth-child(2){color:#32d34b}
+.badge b:nth-child(3){color:#ffd900}
+h1{
+  font-size:58px;
+  line-height:1.05;
+  margin-bottom:20px;
+}
+h1 span{color:#32d34b}
+.hero p{
+  color:#b7c0ce;
+  font-size:18px;
+  line-height:1.7;
+}
+.buttons{margin-top:30px}
+.btn{
+  display:inline-block;
+  padding:15px 28px;
+  border-radius:8px;
+  text-decoration:none;
+  margin-right:12px;
+  font-weight:bold;
+}
+.blue{background:#087df5;color:white}
+.green{background:#20b83d;color:white}
+.yellow{background:#ffd900;color:#000}
+.outline{
+  border:1px solid #32d34b;
+  color:white;
+}
+.phone{
+  height:420px;
+  border:3px solid #168cff;
+  border-radius:35px;
+  padding:25px;
+  background:linear-gradient(145deg,#071b38,#06100c);
+  box-shadow:0 0 50px #168cff55;
+}
+.balance{
+  font-size:34px;
+  margin:25px 0;
+}
+.balance span{color:#32d34b}
+.phone-buttons{
+  display:flex;
+  gap:15px;
+}
+.phone-buttons div{
+  flex:1;
+  padding:35px 10px;
+  text-align:center;
+  border-radius:12px;
+  font-weight:bold;
+}
+.deposit-box{background:#087df5}
+.withdraw-box{background:#16852e}
+.stats{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 6%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+.stat{
+  padding:25px;
+  background:#071225;
+  border:1px solid #1b2a42;
+  border-radius:12px;
+  text-align:center;
+}
+.stat b{font-size:25px}
+.stat p{color:#9da8b8;margin-top:6px}
+.content{
+  max-width:1200px;
+  margin:20px auto;
+  padding:20px 6%;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:20px;
+}
+.card{
+  background:#071225;
+  border:1px solid #1b2a42;
+  border-radius:14px;
+  padding:25px;
+}
+.card h2{margin-bottom:20px}
+.card h2.blue-text{color:#168cff}
+.card h2.green-text{color:#32d34b}
+.card h2.yellow-text{color:#ffd900}
+label{
+  display:block;
+  margin:14px 0 7px;
+  color:#dce3ec;
+}
+input,select{
+  width:100%;
+  padding:13px;
+  border-radius:8px;
+  border:1px solid #293a53;
+  background:#030b18;
+  color:white;
+}
+.amounts{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin-top:10px;
+}
+.amounts button{
+  background:#0b1729;
+  color:white;
+  border:1px solid #263850;
+  padding:9px 3px;
+  border-radius:6px;
+}
+.full{
+  width:100%;
+  border:0;
+  margin-top:15px;
+  padding:14px;
+  border-radius:8px;
+  font-weight:bold;
+}
+.features p{
+  padding:13px 0;
+  border-bottom:1px solid #18263b;
+}
+.features b{color:#fff}
+footer{
+  margin-top:40px;
+  padding:25px 6%;
+  border-top:1px solid #182338;
+  display:flex;
+  justify-content:space-between;
+  color:#9ca8b8;
+}
+@media(max-width:850px){
+  nav{display:none}
+  .hero{grid-template-columns:1fr;padding-top:50px}
+  h1{font-size:42px}
+  .stats{grid-template-columns:1fr 1fr}
+  .content{grid-template-columns:1fr}
+  .phone{height:350px}
+}
+@media(max-width:500px){
+  .stats{grid-template-columns:1fr 1fr}
+  .btn{display:block;text-align:center;margin:10px 0}
+  footer{display:block;text-align:center}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <span>Deposit</span><span>Withdrawal</span>
+    <small>MAIN</small>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Deposit</a>
+    <a href="#">Withdraw</a>
+    <a href="#">About Us</a>
+    <a href="#">FAQs</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div>
+    <a class="nav-btn" href="#">Login</a>
+    <a class="nav-btn register" href="#">Register</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="badge">
+      <b>FAST</b> • <b>SECURE</b> • <b>RELIABLE</b>
+    </div>
+
+    <h1>
+      Fast Deposit &<br>
+      Secure <span>Withdrawal</span>
+    </h1>
+
+    <p>
+      আপনার অর্থ দ্রুত ও নিরাপদভাবে পরিচালনা করুন।
+      Deposit এবং Withdrawal-এর জন্য সহজ ও সুন্দর অনলাইন সিস্টেম।
+    </p>
+
+    <div class="buttons">
+      <a class="btn blue" href="#deposit">Deposit Now ↓</a>
+      <a class="btn outline" href="#withdraw">Withdraw Now ↑</a>
+    </div>
+  </div>
+
+  <div class="phone">
+    <p>Total Balance</p>
+    <div class="balance">৳ 125,680.50</div>
+    <p>Available Balance</p>
+    <div class="balance"><span>৳ 98,450.75</span></div>
+
+    <div class="phone-buttons">
+      <div class="deposit-box">↓<br>Deposit</div>
+      <div class="withdraw-box">↑<br>Withdraw</div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><b>20,458+</b><p>Happy Users</p></div>
+  <div class="stat"><b>৳ 98M+</b><p>Total Transactions</p></div>
+  <div class="stat"><b>99.9%</b><p>Success Rate</p></div>
+  <div class="stat"><b>24/7</b><p>Customer Support</p></div>
+</section>
+
+<section class="content">
+
+  <div class="card" id="deposit">
+    <h2 class="blue-text">↓ Quick Deposit</h2>
+
+    <label>Payment Method</label>
+    <select>
+      <option>bKash</option>
+      <option>Nagad</option>
+      <option>Rocket</option>
+    </select>
+
+    <label>Account Number</label>
+    <input type="text" placeholder="01XXXXXXXXX">
+
+    <label>Amount (BDT)</label>
+    <input type="number" placeholder="Enter amount">
+
+    <div class="amounts">
+      <button>500</button>
+      <button>1,000</button>
+      <button>5,000</button>
+      <button>10,000</button>
+    </div>
+
+    <button class="full blue">Deposit Now ↓</button>
+  </div>
+
+  <div class="card" id="withdraw">
+    <h2 class="green-text">↑ Quick Withdrawal</h2>
+
+    <label>Payment Method</label>
+    <select>
+      <option>Nagad</option>
+      <option>bKash</option>
+      <option>Rocket</option>
+    </select>
+
+    <label>Account Number</label>
+    <input type="text" placeholder="01XXXXXXXXX">
+
+    <label>Amount (BDT)</label>
+    <input type="number" placeholder="Enter amount">
+
+    <div class="amounts">
+      <button>500</button>
+      <button>1,000</button>
+      <button>5,000</button>
+      <button>10,000</button>
+    </div>
+
+    <button class="full green">Withdraw Now ↑</button>
+  </div>
+
+  <div class="card features">
+    <h2 class="yellow-text">Why Choose Us?</h2>
+
+    <p>⚡ <b>Instant Transactions</b><br>
+    দ্রুত transaction processing</p>
+
+    <p>🛡️ <b>Top Security</b><br>
+    নিরাপদ data protection</p>
+
+    <p>🟡 <b>Low Charges</b><br>
+    সহজ ও কম transaction charge</p>
+
+    <p>⚪ <b>24/7 Support</b><br>
+    সবসময় customer support</p>
+  </div>
+
+</section>
+
+<footer>
+  <div>© 2026 DepositWithdrawalMain.com</div>
+  <div>Terms &nbsp; Privacy &nbsp; AML Policy</div>
+</footer>
+
+</body>
+  </html>
