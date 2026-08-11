@@ -2,504 +2,175 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>DepositWithdrawal Main</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
-  font-family:Arial,sans-serif;
-  background:#020817;
-  color:#fff;
+font-family:Arial,sans-serif;
+background:#020817;
+color:#fff;
+line-height:1.5;
 }
-
+a{text-decoration:none;color:inherit}
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:16px 6%;
-  background:#020817f2;
-  border-bottom:1px solid #17263d;
-  backdrop-filter:blur(10px);
+position:sticky;top:0;z-index:99;
+display:flex;align-items:center;justify-content:space-between;
+padding:16px 6%;
+background:#020817f5;
+border-bottom:1px solid #17263d;
+backdrop-filter:blur(12px);
 }
-
-.logo{
-  font-size:21px;
-  font-weight:800;
+.logo{font-size:21px;font-weight:800}
+.blue{color:#168cff}.green{color:#32d34b}.yellow{color:#ffd900}
+.logo small{display:block;font-size:9px;letter-spacing:5px;color:#ffd900}
+nav{display:flex;gap:20px}
+nav a{font-size:14px;color:#b9c5d5}
+nav a:hover{color:#32d34b}
+.head-btns{display:flex;gap:8px}
+.login,.register{
+padding:9px 15px;border-radius:8px;font-weight:bold;font-size:13px
 }
-
-.logo .blue{
-  color:#168cff;
-}
-
-.logo .green{
-  color:#32d34b;
-}
-
-.logo small{
-  display:block;
-  color:#ffd900;
-  font-size:9px;
-  letter-spacing:5px;
-  margin-top:3px;
-}
-
-nav{
-  display:flex;
-  gap:22px;
-}
-
-nav a{
-  color:#cbd5e1;
-  text-decoration:none;
-  font-size:14px;
-}
-
-nav a:hover{
-  color:#32d34b;
-}
-
-.header-buttons{
-  display:flex;
-  gap:8px;
-}
-
-.login,
-.register{
-  padding:10px 16px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:13px;
-}
-
-.login{
-  color:#fff;
-  border:1px solid #168cff;
-}
-
-.register{
-  background:#ffd900;
-  color:#000;
-}
+.login{border:1px solid #168cff}
+.register{background:#ffd900;color:#000}
 
 .hero{
-  max-width:1200px;
-  margin:auto;
-  min-height:560px;
-  padding:75px 6%;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:55px;
-  align-items:center;
+max-width:1200px;margin:auto;padding:75px 6%;
+display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
 }
-
 .badge{
-  display:inline-block;
-  padding:9px 16px;
-  border:1px solid #29425d;
-  border-radius:30px;
-  color:#dce6f2;
-  font-size:12px;
-  letter-spacing:1px;
-  margin-bottom:20px;
+display:inline-block;border:1px solid #29415d;border-radius:30px;
+padding:8px 15px;font-size:12px;margin-bottom:20px
 }
-
-.badge .b{
-  color:#168cff;
-}
-
-.badge .g{
-  color:#32d34b;
-}
-
-.badge .y{
-  color:#ffd900;
-}
-
-h1{
-  font-size:58px;
-  line-height:1.05;
-  margin-bottom:22px;
-}
-
-h1 span{
-  color:#32d34b;
-  text-shadow:0 0 20px #32d34b55;
-}
-
-.hero-text{
-  max-width:570px;
-  color:#9eacbf;
-  font-size:17px;
-  line-height:1.8;
-}
-
-.buttons{
-  display:flex;
-  gap:12px;
-  margin-top:30px;
-}
-
-.btn{
-  padding:15px 25px;
-  border-radius:9px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.deposit-btn{
-  background:#087df5;
-  color:#fff;
-  box-shadow:0 0 25px #087df533;
-}
-
-.withdraw-btn{
-  border:1px solid #32d34b;
-  color:#fff;
-}
-
-.withdraw-btn:hover{
-  background:#32d34b;
-  color:#000;
-}
+h1{font-size:58px;line-height:1.05;margin-bottom:20px}
+h1 span{color:#32d34b;text-shadow:0 0 20px #32d34b55}
+.hero p{color:#98a7ba;max-width:560px;font-size:16px;line-height:1.8}
+.buttons{display:flex;gap:12px;margin-top:28px}
+.btn{padding:14px 23px;border-radius:9px;font-weight:bold}
+.deposit-btn{background:#087df5;box-shadow:0 0 25px #087df533}
+.withdraw-btn{border:1px solid #32d34b}
+.withdraw-btn:hover{background:#32d34b;color:#000}
 
 .dashboard{
-  position:relative;
-  padding:28px;
-  border-radius:25px;
-  background:linear-gradient(145deg,#071a35,#06130d);
-  border:1px solid #168cff;
-  box-shadow:
-    0 0 35px #168cff33,
-    inset 0 0 30px #32d34b0d;
+background:linear-gradient(145deg,#071a35,#06130d);
+border:1px solid #168cff;border-radius:25px;padding:28px;
+box-shadow:0 0 40px #168cff30
 }
-
-.dashboard-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  color:#8fa0b5;
-  font-size:13px;
-}
-
-.online{
-  color:#32d34b;
-}
-
-.balance-title{
-  color:#9eacbf;
-  margin-top:30px;
-  font-size:13px;
-}
-
-.balance{
-  font-size:39px;
-  font-weight:800;
-  margin:8px 0 25px;
-}
-
-.balance span{
-  color:#32d34b;
-}
-
-.dashboard-buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.action{
-  padding:22px 10px;
-  text-align:center;
-  border-radius:13px;
-  font-weight:bold;
-}
-
-.action.deposit{
-  background:#087df5;
-}
-
-.action.withdraw{
-  background:#16852e;
-}
+.dash-top{display:flex;justify-content:space-between;color:#8191a5;font-size:12px}
+.online{color:#32d34b}
+.balance-title{margin-top:30px;color:#8d9caf;font-size:13px}
+.balance{font-size:38px;font-weight:800;margin:8px 0 25px}
+.balance span{color:#32d34b}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.action{padding:21px;text-align:center;border-radius:13px;font-weight:bold}
+.action.d{background:#087df5}.action.w{background:#16852e}
 
 .stats{
-  max-width:1200px;
-  margin:auto;
-  padding:0 6% 35px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
+max-width:1200px;margin:auto;padding:0 6% 35px;
+display:grid;grid-template-columns:repeat(4,1fr);gap:14px
 }
-
 .stat{
-  padding:22px 15px;
-  text-align:center;
-  background:#071225;
-  border:1px solid #1a2a41;
-  border-radius:13px;
+background:#071225;border:1px solid #1a2a41;border-radius:13px;
+padding:20px;text-align:center
 }
+.stat strong{font-size:23px}.stat p{color:#8190a4;font-size:12px;margin-top:5px}
 
-.stat strong{
-  font-size:24px;
-}
-
-.stat p{
-  color:#8492a6;
-  font-size:12px;
-  margin-top:7px;
-}
-
-.section-title{
-  text-align:center;
-  padding:55px 20px 25px;
-}
-
-.section-title h2{
-  font-size:32px;
-}
-
-.section-title p{
-  color:#8290a4;
-  margin-top:10px;
-}
+.title{text-align:center;padding:50px 20px 20px}
+.title h2{font-size:31px}.title p{color:#8190a4;margin-top:7px}
 
 .content{
-  max-width:1200px;
-  margin:auto;
-  padding:20px 6% 60px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+max-width:1200px;margin:auto;padding:20px 6% 60px;
+display:grid;grid-template-columns:1fr 1fr;gap:20px
 }
-
 .card{
-  background:#071225;
-  border:1px solid #1a2a41;
-  border-radius:16px;
-  padding:27px;
+background:#071225;border:1px solid #1a2a41;
+border-radius:16px;padding:26px
 }
-
-.card:hover{
-  border-color:#294a70;
+.card h2{margin-bottom:20px}
+label{display:block;color:#c9d4e2;font-size:13px;margin:14px 0 6px}
+input,select{
+width:100%;padding:13px;border-radius:8px;
+background:#030b18;border:1px solid #273a54;color:#fff;outline:none
 }
-
-.card h2{
-  margin-bottom:22px;
-}
-
-.blue-title{
-  color:#168cff;
-}
-
-.green-title{
-  color:#32d34b;
-}
-
-.yellow-title{
-  color:#ffd900;
-}
-
-label{
-  display:block;
-  margin:15px 0 7px;
-  color:#cbd5e1;
-  font-size:13px;
-}
-
-input,
-select{
-  width:100%;
-  padding:14px;
-  border-radius:8px;
-  border:1px solid #263852;
-  background:#030b18;
-  color:#fff;
-  outline:none;
-}
-
-input:focus,
-select:focus{
-  border-color:#168cff;
-}
-
-.amounts{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:7px;
-  margin-top:10px;
-}
-
+.amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:9px}
 .amounts button{
-  padding:10px 4px;
-  background:#0a1729;
-  color:#fff;
-  border:1px solid #263852;
-  border-radius:7px;
-  cursor:pointer;
+padding:9px 3px;border-radius:7px;background:#0a1729;
+border:1px solid #263850;color:#fff;cursor:pointer
 }
-
-.amounts button:hover{
-  border-color:#168cff;
-}
-
 .full{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:8px;
-  margin-top:16px;
-  font-weight:bold;
-  cursor:pointer;
+width:100%;padding:13px;margin-top:15px;border:0;
+border-radius:8px;font-weight:bold;cursor:pointer
 }
+.full.blue-bg{background:#087df5;color:#fff}
+.full.green-bg{background:#20b83d;color:#fff}
 
-.blue-full{
-  background:#087df5;
-  color:#fff;
-}
-
-.green-full{
-  background:#20b83d;
-  color:#fff;
-}
-
-.features{
-  grid-column:1 / -1;
-}
-
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
+.features{grid-column:1/-1}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .feature{
-  padding:20px;
-  background:#030b18;
-  border:1px solid #17283e;
-  border-radius:12px;
+background:#030b18;border:1px solid #17283e;
+border-radius:12px;padding:20px
 }
+.feature .icon{font-size:25px;margin-bottom:7px}
+.feature h3{font-size:15px}.feature p{color:#8190a4;font-size:12px;margin-top:5px}
 
-.feature-icon{
-  font-size:25px;
-  margin-bottom:10px;
+.contact{
+max-width:1200px;margin:auto;padding:10px 6% 60px
 }
-
-.feature h3{
-  font-size:15px;
-  margin-bottom:7px;
+.contact-box{
+background:#071225;border:1px solid #1a2a41;border-radius:16px;
+padding:25px;text-align:center
 }
-
-.feature p{
-  color:#8290a4;
-  font-size:12px;
-  line-height:1.5;
+.contact-buttons{display:flex;justify-content:center;gap:12px;margin-top:18px}
+.contact-btn{
+padding:13px 22px;border-radius:9px;font-weight:bold
 }
+.whatsapp{background:#20b83d}.telegram{background:#168cff}
 
 footer{
-  border-top:1px solid #18263b;
-  padding:25px 6%;
-  display:flex;
-  justify-content:space-between;
-  color:#77869b;
-  font-size:12px;
+border-top:1px solid #18263b;padding:25px 6%;
+display:flex;justify-content:space-between;color:#718096;font-size:12px
+}
+
+/* Login / Register / Admin demo panels */
+.panel{
+display:none;
+max-width:500px;margin:50px auto;padding:28px 6%;
+}
+.panel-box{
+background:#071225;border:1px solid #1a2a41;border-radius:16px;
+padding:28px;box-shadow:0 0 30px #0008
+}
+.panel-box h2{margin-bottom:20px}
+.panel-box button{
+width:100%;margin-top:16px;padding:13px;border:0;border-radius:8px;
+background:#087df5;color:#fff;font-weight:bold
+}
+.admin-box{
+margin-top:20px;padding:15px;background:#030b18;
+border:1px solid #263850;border-radius:10px;color:#aab7c7
 }
 
 @media(max-width:900px){
-
-  nav{
-    display:none;
-  }
-
-  .hero{
-    grid-template-columns:1fr;
-    padding-top:55px;
-  }
-
-  h1{
-    font-size:45px;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .content{
-    grid-template-columns:1fr;
-  }
-
-  .features{
-    grid-column:auto;
-  }
-
-  .feature-grid{
-    grid-template-columns:1fr 1fr;
-  }
+nav{display:none}
+.hero{grid-template-columns:1fr;padding-top:50px}
+h1{font-size:45px}
+.stats{grid-template-columns:1fr 1fr}
+.content{grid-template-columns:1fr}
+.features{grid-column:auto}
+.feature-grid{grid-template-columns:1fr 1fr}
 }
-
 @media(max-width:550px){
-
-  header{
-    padding:14px 4%;
-  }
-
-  .header-buttons{
-    display:none;
-  }
-
-  .hero{
-    padding:45px 5%;
-  }
-
-  h1{
-    font-size:38px;
-  }
-
-  .hero-text{
-    font-size:15px;
-  }
-
-  .buttons{
-    flex-direction:column;
-  }
-
-  .btn{
-    text-align:center;
-  }
-
-  .stats{
-    padding-left:5%;
-    padding-right:5%;
-  }
-
-  .stat strong{
-    font-size:19px;
-  }
-
-  .content{
-    padding-left:5%;
-    padding-right:5%;
-  }
-
-  .feature-grid{
-    grid-template-columns:1fr;
-  }
-
-  footer{
-    display:block;
-    text-align:center;
-    line-height:2;
-  }
+.head-btns{display:none}
+.hero{padding:45px 5%}
+h1{font-size:38px}
+.buttons,.contact-buttons{flex-direction:column}
+.btn,.contact-btn{text-align:center}
+.stats{padding-left:5%;padding-right:5%}
+.content,.contact{padding-left:5%;padding-right:5%}
+.feature-grid{grid-template-columns:1fr}
+footer{display:block;text-align:center;line-height:2}
 }
 </style>
 </head>
@@ -507,277 +178,268 @@ footer{
 <body>
 
 <header>
+<div class="logo">
+<span class="blue">Deposit</span><span class="green">Withdrawal</span>
+<small>MAIN</small>
+</div>
 
-  <div class="logo">
-    <span class="blue">Deposit</span><span class="green">Withdrawal</span>
-    <small>MAIN</small>
-  </div>
+<nav>
+<a href="#home">Home</a>
+<a href="#deposit">Deposit</a>
+<a href="#withdraw">Withdraw</a>
+<a href="#features">Features</a>
+<a href="#contact">Contact</a>
+</nav>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#deposit">Deposit</a>
-    <a href="#withdraw">Withdraw</a>
-    <a href="#features">Features</a>
-  </nav>
-
-  <div class="header-buttons">
-    <a href="#" class="login">Login</a>
-    <a href="#" class="register">Register</a>
-  </div>
-
+<div class="head-btns">
+<a class="login" href="#login">Login</a>
+<a class="register" href="#register">Register</a>
+</div>
 </header>
 
 
-<section class="hero">
+<section class="hero" id="home">
 
-  <div>
+<div>
+<div class="badge">
+<span class="blue">FAST</span> •
+<span class="green">SECURE</span> •
+<span class="yellow">RELIABLE</span>
+</div>
 
-    <div class="badge">
-      <span class="b">FAST</span>
-      •
-      <span class="g">SECURE</span>
-      •
-      <span class="y">RELIABLE</span>
-    </div>
+<h1>Fast Deposit &<br>Secure <span>Withdrawal</span></h1>
 
-    <h1>
-      Fast Deposit &<br>
-      Secure <span>Withdrawal</span>
-    </h1>
+<p>
+আপনার অর্থ দ্রুত ও নিরাপদভাবে পরিচালনা করুন।
+Deposit এবং Withdrawal-এর জন্য একটি সহজ ও আধুনিক অনলাইন সিস্টেম।
+</p>
 
-    <p class="hero-text">
-      আপনার অর্থ দ্রুত ও নিরাপদভাবে পরিচালনা করুন।
-      Deposit এবং Withdrawal-এর জন্য একটি সহজ,
-      আধুনিক ও সুন্দর অনলাইন সিস্টেম।
-    </p>
-
-    <div class="buttons">
-      <a href="#deposit" class="btn deposit-btn">
-        Deposit Now ↓
-      </a>
-
-      <a href="#withdraw" class="btn withdraw-btn">
-        Withdraw Now ↑
-      </a>
-    </div>
-
-  </div>
+<div class="buttons">
+<a class="btn deposit-btn" href="#deposit">Deposit Now ↓</a>
+<a class="btn withdraw-btn" href="#withdraw">Withdraw Now ↑</a>
+</div>
+</div>
 
 
-  <div class="dashboard">
+<div class="dashboard">
 
-    <div class="dashboard-top">
-      <span>ACCOUNT DASHBOARD</span>
-      <span class="online">● Online</span>
-    </div>
+<div class="dash-top">
+<span>ACCOUNT DASHBOARD</span>
+<span class="online">● Online</span>
+</div>
 
-    <div class="balance-title">
-      Available Balance
-    </div>
+<div class="balance-title">Available Balance</div>
 
-    <div class="balance">
-      ৳ <span>98,450.75</span>
-    </div>
+<div class="balance">৳ <span>98,450.75</span></div>
 
-    <div class="dashboard-buttons">
+<div class="actions">
+<div class="action d">↓<br>Deposit</div>
+<div class="action w">↑<br>Withdraw</div>
+</div>
 
-      <div class="action deposit">
-        ↓<br>
-        Deposit
-      </div>
-
-      <div class="action withdraw">
-        ↑<br>
-        Withdraw
-      </div>
-
-    </div>
-
-  </div>
-
+</div>
 </section>
 
 
 <section class="stats">
 
-  <div class="stat">
-    <strong>20,458+</strong>
-    <p>Happy Users</p>
-  </div>
-
-  <div class="stat">
-    <strong>৳98M+</strong>
-    <p>Total Transactions</p>
-  </div>
-
-  <div class="stat">
-    <strong>99.9%</strong>
-    <p>Success Rate</p>
-  </div>
-
-  <div class="stat">
-    <strong>24/7</strong>
-    <p>Customer Support</p>
-  </div>
+<div class="stat"><strong>20,458+</strong><p>Happy Users</p></div>
+<div class="stat"><strong>৳98M+</strong><p>Total Transactions</p></div>
+<div class="stat"><strong>99.9%</strong><p>Success Rate</p></div>
+<div class="stat"><strong>24/7</strong><p>Customer Support</p></div>
 
 </section>
 
 
-<div class="section-title">
-
-  <h2>Deposit & Withdrawal</h2>
-
-  <p>
-    আপনার পছন্দের payment method ব্যবহার করুন
-  </p>
-
-</div>
+<section class="title">
+<h2>Deposit & Withdrawal</h2>
+<p>আপনার পছন্দের payment method ব্যবহার করুন</p>
+</section>
 
 
 <section class="content">
 
-  <div class="card" id="deposit">
+<div class="card" id="deposit">
+<h2 class="blue">↓ Quick Deposit</h2>
 
-    <h2 class="blue-title">
-      ↓ Quick Deposit
-    </h2>
+<label>Payment Method</label>
+<select>
+<option>bKash</option>
+<option>Nagad</option>
+<option>Rocket</option>
+</select>
 
-    <label>Payment Method</label>
+<label>Account Number</label>
+<input type="text" placeholder="01XXXXXXXXX">
 
-    <select>
-      <option>bKash</option>
-      <option>Nagad</option>
-      <option>Rocket</option>
-    </select>
+<label>Amount (BDT)</label>
+<input type="number" placeholder="Enter amount">
 
-    <label>Account Number</label>
+<div class="amounts">
+<button>500</button>
+<button>1,000</button>
+<button>5,000</button>
+<button>10,000</button>
+</div>
 
-    <input
-      type="text"
-      placeholder="01XXXXXXXXX"
-    >
-
-    <label>Amount (BDT)</label>
-
-    <input
-      type="number"
-      placeholder="Enter amount"
-    >
-
-    <div class="amounts">
-      <button>500</button>
-      <button>1,000</button>
-      <button>5,000</button>
-      <button>10,000</button>
-    </div>
-
-    <button class="full blue-full">
-      Deposit Now ↓
-    </button>
-
-  </div>
+<button class="full blue-bg">Deposit Request ↓</button>
+</div>
 
 
-  <div class="card" id="withdraw">
+<div class="card" id="withdraw">
+<h2 class="green">↑ Quick Withdrawal</h2>
 
-    <h2 class="green-title">
-      ↑ Quick Withdrawal
-    </h2>
+<label>Payment Method</label>
+<select>
+<option>Nagad</option>
+<option>bKash</option>
+<option>Rocket</option>
+</select>
 
-    <label>Payment Method</label>
+<label>Account Number</label>
+<input type="text" placeholder="01XXXXXXXXX">
 
-    <select>
-      <option>Nagad</option>
-      <option>bKash</option>
-      <option>Rocket</option>
-    </select>
+<label>Amount (BDT)</label>
+<input type="number" placeholder="Enter amount">
 
-    <label>Account Number</label>
+<div class="amounts">
+<button>500</button>
+<button>1,000</button>
+<button>5,000</button>
+<button>10,000</button>
+</div>
 
-    <input
-      type="text"
-      placeholder="01XXXXXXXXX"
-    >
-
-    <label>Amount (BDT)</label>
-
-    <input
-      type="number"
-      placeholder="Enter amount"
-    >
-
-    <div class="amounts">
-      <button>500</button>
-      <button>1,000</button>
-      <button>5,000</button>
-      <button>10,000</button>
-    </div>
-
-    <button class="full green-full">
-      Withdraw Now ↑
-    </button>
-
-  </div>
+<button class="full green-bg">Withdrawal Request ↑</button>
+</div>
 
 
-  <div class="card features" id="features">
+<div class="card features" id="features">
 
-    <h2 class="yellow-title">
-      Why Choose Us?
-    </h2>
+<h2 class="yellow">Why Choose Us?</h2>
 
-    <div class="feature-grid">
+<div class="feature-grid">
 
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <h3>Instant Transactions</h3>
-        <p>
-          দ্রুত transaction processing
-        </p>
-      </div>
+<div class="feature">
+<div class="icon">⚡</div>
+<h3>Fast Processing</h3>
+<p>দ্রুত request processing system.</p>
+</div>
 
-      <div class="feature">
-        <div class="feature-icon">🛡️</div>
-        <h3>Top Security</h3>
-        <p>
-          নিরাপদ data protection
-        </p>
-      </div>
+<div class="feature">
+<div class="icon">🛡️</div>
+<h3>Security</h3>
+<p>Account security focused design.</p>
+</div>
 
-      <div class="feature">
-        <div class="feature-icon">💰</div>
-        <h3>Low Charges</h3>
-        <p>
-          সহজ ও কম transaction charge
-        </p>
-      </div>
+<div class="feature">
+<div class="icon">💰</div>
+<h3>Easy Payment</h3>
+<p>bKash, Nagad এবং Rocket support UI.</p>
+</div>
 
-      <div class="feature">
-        <div class="feature-icon">🎧</div>
-        <h3>24/7 Support</h3>
-        <p>
-          সবসময় customer support
-        </p>
-      </div>
+<div class="feature">
+<div class="icon">🎧</div>
+<h3>24/7 Support</h3>
+<p>যেকোনো প্রয়োজনে support contact.</p>
+</div>
 
-    </div>
+</div>
+</div>
 
-  </div>
+</section>
+
+
+<section class="contact" id="contact">
+
+<div class="contact-box">
+
+<h2>Need Help?</h2>
+
+<p style="color:#8190a4;margin-top:7px">
+আমাদের সাথে যোগাযোগ করুন
+</p>
+
+<div class="contact-buttons">
+
+<a class="contact-btn whatsapp"
+href="https://wa.me/8801325259925"
+target="_blank">
+WhatsApp
+</a>
+
+<a class="contact-btn telegram"
+href="https://t.me/DadaVai_Main"
+target="_blank">
+Telegram
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Login UI -->
+
+<section class="panel" id="login">
+
+<div class="panel-box">
+
+<h2 class="blue">Login</h2>
+
+<label>Email / Username</label>
+<input type="text" placeholder="Enter your email or username">
+
+<label>Password</label>
+<input type="password" placeholder="Enter password">
+
+<button>Login</button>
+
+<p style="margin-top:15px;color:#8190a4;font-size:12px">
+Demo UI — secure authentication will be connected with backend later.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- Register UI -->
+
+<section class="panel" id="register">
+
+<div class="panel-box">
+
+<h2 class="yellow">Create Account</h2>
+
+<label>Name</label>
+<input type="text" placeholder="Your name">
+
+<label>Email</label>
+<input type="email" placeholder="Your email">
+
+<label>Password</label>
+<input type="password" placeholder="Create password">
+
+<button>Register</button>
+
+<p style="margin-top:15px;color:#8190a4;font-size:12px">
+Demo registration UI.
+</p>
+
+</div>
 
 </section>
 
 
 <footer>
 
-  <div>
-    © 2026 DepositWithdrawalMain.com
-  </div>
+<div>© 2026 DepositWithdrawalMain.com</div>
 
-  <div>
-    Terms &nbsp; Privacy &nbsp; AML Policy
-  </div>
+<div>Terms &nbsp; Privacy &nbsp; Support</div>
 
 </footer>
 
 </body>
-        </html>
+</html>
